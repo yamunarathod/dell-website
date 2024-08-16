@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Count</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h1>Index Page Loaded: <span id="count"><%= pageCount %></span> times</h1>
+
+  <script>
+    const socket = io();
+
+    // Listen for the 'updateCount' event from the server
+    socket.on('updateCount', function(newCount) {
+      document.getElementById('count').textContent = newCount;
+    });
+  </script>
+</body>
+</html>
